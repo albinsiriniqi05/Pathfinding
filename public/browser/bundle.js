@@ -37,6 +37,7 @@ function launchAnimations(board, success, type, object, algorithm, heuristic) {
           }
         } else {
           board.nodesToAnimate = [];
+          console.log(success, "This");
           if (success) {
             if (document.getElementById(board.target).className !== "visitedTargetNodeBlue") {
               document.getElementById(board.target).className = "visitedTargetNodeBlue";
@@ -81,6 +82,7 @@ function launchAnimations(board, success, type, object, algorithm, heuristic) {
       }
       timeout(index + 1);
     }, speed);
+    
   }
 
   function change(currentNode, previousNode, bidirectional) {
@@ -597,8 +599,7 @@ Board.prototype.drawShortestPathTimeout = function(targetNodeId, startNodeId, ty
   let board = this;
   let currentNode;
   let secondCurrentNode;
-  let currentNodesToAnimate;
-
+  let currentNodesToAnimate;  
   if (board.currentAlgorithm !== "bidirectional") {
     currentNode = board.nodes[board.nodes[targetNodeId].previousNode];
     if (object) {
@@ -619,7 +620,6 @@ Board.prototype.drawShortestPathTimeout = function(targetNodeId, startNodeId, ty
         board.nodes[board.target].direction = getDistance(board.nodes[board.middleNode], board.nodes[board.target])[2];
       }
       if (object) {
-
       } else {
         currentNodesToAnimate = [];
         board.nodes[board.middleNode].direction = getDistance(currentNode, board.nodes[board.middleNode])[2];
@@ -667,6 +667,7 @@ Board.prototype.drawShortestPathTimeout = function(targetNodeId, startNodeId, ty
         shortestPathChange(board.nodes[board.target], currentNodesToAnimate[index - 1], "isActualTarget");
       }
       if (index > currentNodesToAnimate.length) {
+        document.getElementById("alert").style.display = "block"
         board.toggleButtons();
         return;
       }
@@ -760,6 +761,7 @@ Board.prototype.clearPath = function(clickedButton) {
 
   document.getElementById("startButtonStart").onclick = () => {
     if (!this.currentAlgorithm) {
+      
       document.getElementById("startButtonStart").innerHTML = '<button class="btn btn-default navbar-btn" type="button">Pick an Algorithm!</button>'
     } else {
       this.clearPath("clickedButton");
@@ -777,7 +779,9 @@ Board.prototype.clearPath = function(clickedButton) {
         this.algoDone = true;
       } else if (this.currentAlgorithm === "astar") {
         if (!this.numberOfObjects) {
+
           success = weightedSearchAlgorithm(this.nodes, this.start, this.target, this.nodesToAnimate, this.boardArray, this.currentAlgorithm, this.currentHeuristic);
+          
           launchAnimations(this, success, "weighted");
         } else {
           this.isObject = true;
@@ -890,12 +894,15 @@ Board.prototype.instantAlgorithm = function() {
     this.algoDone = true;
   } else if (this.currentAlgorithm === "astar") {
     if (!this.numberOfObjects) {
+      console.log("Hello")
       success = weightedSearchAlgorithm(this.nodes, this.start, this.target, this.nodesToAnimate, this.boardArray, this.currentAlgorithm, this.currentHeuristic);
       launchInstantAnimations(this, success, "weighted");
+      
     } else {
       this.isObject = true;
       success = weightedSearchAlgorithm(this.nodes, this.start, this.object, this.objectNodesToAnimate, this.boardArray, this.currentAlgorithm, this.currentHeuristic);
       launchInstantAnimations(this, success, "weighted", "object", this.currentAlgorithm);
+
     }
     this.algoDone = true;
   }
@@ -1015,6 +1022,10 @@ Board.prototype.toggleTutorialButtons = function() {
     this.toggleButtons();
   }
 
+  document.getElementById("closeButton").onclick = () => {
+    document.getElementById("alert").style.display = "none";
+  }
+
   if (document.getElementById("nextButton")) {
     document.getElementById("nextButton").onclick = () => {
       if (counter < 9) counter++;
@@ -1042,13 +1053,13 @@ Board.prototype.toggleTutorialButtons = function() {
     } else if (counter === 5) {
       document.getElementById("tutorial").innerHTML = `<h3>Adding walls and weights</h3><h6>Click on the grid to add a wall. Click on the grid while pressing W to add a weight. Generate mazes and patterns from the "Mazes & Patterns" drop-down menu.</h6><p>Walls are impenetrable, meaning that a path cannot cross through them. Weights, however, are not impassable. They are simply more "costly" to move through. In this application, moving through a weight node has a "cost" of 15.</p><img id="secondTutorialImage" src="public/styling/walls.gif"><div id="tutorialCounter">${counter}/9</div><button id="nextButton" class="btn btn-default navbar-btn" type="button">Next</button><button id="previousButton" class="btn btn-default navbar-btn" type="button">Previous</button><button id="skipButton" class="btn btn-default navbar-btn" type="button">Skip Tutorial</button>`
     } else if (counter === 6) {
-      document.getElementById("tutorial").innerHTML = `<h3>Adding a bomb</h3><h6>Click the "Add Bomb" button.</h6><p>Adding a bomb will change the course of the chosen algorithm. In other words, the algorithm will first look for the bomb (in an effort to diffuse it) and will then look for the target node. Note that the Bidirectional Swarm Algorithm does not support adding a bomb.</p><img id="secondTutorialImage" src="public/styling/bomb.png"><div id="tutorialCounter">${counter}/9</div><button id="nextButton" class="btn btn-default navbar-btn" type="button">Next</button><button id="previousButton" class="btn btn-default navbar-btn" type="button">Previous</button><button id="skipButton" class="btn btn-default navbar-btn" type="button">Skip Tutorial</button>`
+      document.getElementById("tutorial").innerHTML = `<h3>Adding Mater</h3><h6>Click the "Add Mater" button.</h6><p>Adding the Mater car will change the course of the chosen algorithm. In other words, the algorithm will first look to find Mater, and will then look for the finish line. Note that the Bidirectional Swarm Algorithm does not support adding Mater.</p><div id="tutorialCounter">${counter}/9</div><button id="nextButton" class="btn btn-default navbar-btn" type="button">Next</button><button id="previousButton" class="btn btn-default navbar-btn" type="button">Previous</button><button id="skipButton" class="btn btn-default navbar-btn" type="button">Skip Tutorial</button>`
     } else if (counter === 7) {
       document.getElementById("tutorial").innerHTML = `<h3>Dragging nodes</h3><h6>Click and drag the start, bomb, and target nodes to move them.</h6><p>Note that you can drag nodes even after an algorithm has finished running. This will allow you to instantly see different paths.</p><img src="public/styling/dragging.gif"><div id="tutorialCounter">${counter}/9</div><button id="nextButton" class="btn btn-default navbar-btn" type="button">Next</button><button id="previousButton" class="btn btn-default navbar-btn" type="button">Previous</button><button id="skipButton" class="btn btn-default navbar-btn" type="button">Skip Tutorial</button>`
     } else if (counter === 8) {
       document.getElementById("tutorial").innerHTML = `<h3>Visualizing and more</h3><h6>Use the navbar buttons to visualize algorithms and to do other stuff!</h6><p>You can clear the current path, clear walls and weights, clear the entire board, and adjust the visualization speed, all from the navbar. If you want to access this tutorial again, click on "Pathfinding Visualizer" in the top left corner of your screen.</p><img id="secondTutorialImage" src="public/styling/navbar.png"><div id="tutorialCounter">${counter}/9</div><button id="nextButton" class="btn btn-default navbar-btn" type="button">Next</button><button id="previousButton" class="btn btn-default navbar-btn" type="button">Previous</button><button id="skipButton" class="btn btn-default navbar-btn" type="button">Skip Tutorial</button>`
     } else if (counter === 9) {
-      document.getElementById("tutorial").innerHTML = `<h3>Enjoy!</h3><h6>I hope you have just as much fun playing around with this visualization tool as I had building it!</h6><p>If you want to see the source code for this application, check out my <a href="https://github.com/clementmihailescu/Pathfinding-Visualizer">github</a>.</p><div id="tutorialCounter">${counter}/9</div><button id="finishButton" class="btn btn-default navbar-btn" type="button">Finish</button><button id="previousButton" class="btn btn-default navbar-btn" type="button">Previous</button><button id="skipButton" class="btn btn-default navbar-btn" type="button">Skip Tutorial</button>`
+      document.getElementById("tutorial").innerHTML = `<h3>Enjoy!</h3><h6>I hope you have just as much fun playing around with this visualization tool as I had building it!</h6><p>If you want to see the source code for this application, check out my <a href="https://github.com/albinsiriniqi05/Pathfinding-Visualization">github</a>.</p><div id="tutorialCounter">${counter}/9</div><button id="finishButton" class="btn btn-default navbar-btn" type="button">Finish</button><button id="previousButton" class="btn btn-default navbar-btn" type="button">Previous</button><button id="skipButton" class="btn btn-default navbar-btn" type="button">Skip Tutorial</button>`
       document.getElementById("finishButton").onclick = () => {
         document.getElementById("tutorial").style.display = "none";
         board.toggleButtons();
@@ -1068,6 +1079,7 @@ Board.prototype.toggleButtons = function() {
 
     document.getElementById("startButtonStart").onclick = () => {
       if (!this.currentAlgorithm) {
+        console.log("Hi")
         document.getElementById("startButtonStart").innerHTML = '<button class="btn btn-default navbar-btn" type="button">Pick an Algorithm!</button>'
       } else {
         this.clearPath("clickedButton");
@@ -1088,13 +1100,19 @@ Board.prototype.toggleButtons = function() {
         } else if (this.currentAlgorithm === "astar") {
           if (!this.numberOfObjects) {
             success = weightedSearchAlgorithm(this.nodes, this.start, this.target, this.nodesToAnimate, this.boardArray, this.currentAlgorithm, this.currentHeuristic);
+            var startTime = performance.now();
             launchAnimations(this, success, "weighted");
+            
+            var endTime = performance.now();
+            var time = endTime - startTime
+            console.log('It took the algorithm:' + time);
           } else {
             this.isObject = true;
             success = weightedSearchAlgorithm(this.nodes, this.start, this.object, this.objectNodesToAnimate, this.boardArray, this.currentAlgorithm, this.currentHeuristic);
             launchAnimations(this, success, "weighted", "object", this.currentAlgorithm);
           }
           this.algoDone = true;
+          
         } else if (weightedAlgorithms.includes(this.currentAlgorithm)) {
           if (!this.numberOfObjects) {
             success = weightedSearchAlgorithm(this.nodes, this.start, this.target, this.nodesToAnimate, this.boardArray, this.currentAlgorithm, this.currentHeuristic);
@@ -1228,7 +1246,7 @@ Board.prototype.toggleButtons = function() {
     }
 
     document.getElementById("startButtonClearBoard").onclick = () => {
-      document.getElementById("startButtonAddObject").innerHTML = '<a href="#">Add Bomb</a></li>';
+      document.getElementById("startButtonAddObject").innerHTML = '<a href="#">Add Mater  </a></li>';
 
 
 
@@ -1317,7 +1335,7 @@ Board.prototype.toggleButtons = function() {
           if (this.target === objectNodeId || this.start === objectNodeId || this.numberOfObjects === 1) {
             console.log("Failure to place object.");
           } else {
-            document.getElementById("startButtonAddObject").innerHTML = '<a href="#">Remove Bomb</a></li>';
+            document.getElementById("startButtonAddObject").innerHTML = '<a href="#">Remove Mater</a></li>';
             this.clearPath("clickedButton");
             this.object = objectNodeId;
             this.numberOfObjects = 1;
@@ -1326,7 +1344,7 @@ Board.prototype.toggleButtons = function() {
           }
         } else {
           let objectNodeId = this.object;
-          document.getElementById("startButtonAddObject").innerHTML = '<a href="#">Add Bomb</a></li>';
+          document.getElementById("startButtonAddObject").innerHTML = '<a href="#">Add Mater</a></li>';
           document.getElementById(objectNodeId).className = "unvisited";
           this.object = null;
           this.numberOfObjects = 0;

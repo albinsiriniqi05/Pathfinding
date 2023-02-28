@@ -17,7 +17,6 @@ function launchAnimations(board, success, type, object, algorithm, heuristic) {
             board.clearNodeStatuses();
             let newSuccess;
             if (board.currentAlgorithm === "bidirectional") {
-
             } else {
               if (type === "weighted") {
                 newSuccess = weightedSearchAlgorithm(board.nodes, board.object, board.target, board.nodesToAnimate, board.boardArray, algorithm, heuristic);
@@ -80,6 +79,7 @@ function launchAnimations(board, success, type, object, algorithm, heuristic) {
       }
       timeout(index + 1);
     }, speed);
+    
   }
 
   function change(currentNode, previousNode, bidirectional) {

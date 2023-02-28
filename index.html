@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Pathfinding Visualizer</title>
+    <title>Albin's Visualizer</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link id="cssTheme" rel="stylesheet" href="public/styling/cssBasic.css"/>
     <link rel="shortcut icon" type="image/png" href="public/styling/c_icon.png"/>
@@ -10,7 +10,7 @@
      <nav class="navbar navbar-inverse">
        <div class="container-fluid">
          <div class="navbar-header">
-           <a id="refreshButton" class="navbar-brand" href="#">Pathfinding Visualizer</a>
+           <a id="refreshButton" class="navbar-brand" href="#">Albin's Visualizer</a>
          </div>
          <ul class="nav navbar-nav">
            <li class="dropdown">
@@ -39,10 +39,10 @@
                <li id='startStairDemonstration'><a href="#">Simple Stair Pattern</a></li>
              </ul>
            </li>
-           <li id='startButtonAddObject'><a href="#">Add Bomb</a></li>
+           <li id='startButtonAddObject'><a href="#">Add Mater</a></li>
            <li id='startButtonStart'><button id="actualStartButton" class="btn btn-default navbar-btn" type="button">Visualize!</button></li>
            <li id='startButtonClearBoard'><a href="#">Clear Board</a></li>
-           <li id='startButtonClearWalls'><a href="#">Clear Walls &amp; Weights</a></li>
+           <li id='startButtonClearWalls'><a href="#">Clear Walls</a></li>
            <li id='startButtonClearPath'><a href="#">Clear Path</a></li>
            <li class="dropdown">
              <a id="adjustSpeed" class="dropdown-toggle" data-toggle="dropdown" href="#">Speed: Fast
@@ -67,29 +67,35 @@
       <button id="previousButton" class="btn btn-default navbar-btn" type="button">Previous</button>
       <button id="skipButton" class="btn btn-default navbar-btn" type="button">Skip Tutorial</button>
     </div>
+    <div id = "alert" data-closable class="callout">
+      <h4 style="margin-top: 150px;">Path found</h4>
+      <button id = "closeButton" class="btn btn-default navbar-btn" type="button"><span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
     <div id='mainGrid'>
       <div id='mainText'>
         <ul>
           <li>
-            <div class="start"></div>Start Node</li>
+            <div class="start"></div> <span style="margin-left: 1px;"> Start Node </span></li>
           <li>
-            <div class="target"></div>Target Node</li>
+            <div class="target"></div> <span style="margin-left: 1px;"> Target Node </span></li>
           <li id="bombLegend">
-            <div class="object"></div>Bomb Node</li>
+            <div class="object"></div> <span style="margin-left: 1px;">Mater </span></li>
           <li id="weightLegend">
-            <div class="borderlessWeight"></div>Weight Node</li>
+            <div class="borderlessWeight"></div> <span style="margin-left:1px;">Weight Node </span></li>
           <li>
-            <div class="unvisited"></div>Unvisited Node</li>
+            <div class="unvisited"></div> <span style="margin-left: 1px;">Unvisited Node</span></li>
           <li>
-            <div class="visited"></div><div class="visitedobject"></div>Visited Nodes</li>
+            <div class="visited"></div><div class="visitedobject"></div> <span style="margin-left: 1px;">Visited Nodes</span></li>
           <li>
-            <div class="shortest-path"></div>Shortest-path Node</li>
+            <div class="shortest-path"></div> <span style="margin-left: 1px;"> Shortest-path Node</span></li>
           <li>
-            <div class="wall"></div>Wall Node</li>
+            <div class="wall"></div> <span style="margin-left: 1px;"> Wall Node </span> </li>
         </ul>
       </div>
       <div id="algorithmDescriptor">Pick an algorithm and visualize it!</div>
-      <table id='board'/>
+      <table id='board'></table>
     </div>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

@@ -12,7 +12,7 @@
 
 .start{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-image:url(triangletwo-right.svg);
+  background-image:url(car-right.png);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -29,7 +29,7 @@
 
 .instantshortest-path-up{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-up.svg);
+  background:url(car-up.png);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -38,7 +38,7 @@
 
 .shortest-path-up{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-up.svg);
+  background:url(car-up.png);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -55,7 +55,7 @@
 
 .instantshortest-path-down{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-down.svg);
+  background:url(car-down.png);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -64,7 +64,7 @@
 
 .shortest-path-down{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-down.svg);
+  background:url(car-down.png);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -81,7 +81,7 @@
 
 .instantshortest-path-right{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-right.svg);
+  background:url(car-right.png);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -90,7 +90,7 @@
 
 .shortest-path-right{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-right.svg);
+  background:url(car-right.png);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -107,7 +107,7 @@
 
 .instantshortest-path-left{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-left.svg);
+  background:url(car-left.png);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -116,7 +116,7 @@
 
 .shortest-path-left{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-left.svg);
+  background:url(car-left.png);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -134,7 +134,7 @@
 .instantStartTransparent{
   /*border: 1px solid rgb(175, 216, 248);*/
   opacity: 0.5;
-  background-image:url(triangletwo-right.svg);
+  background-image:url(car-right.png);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -144,7 +144,7 @@
 .startTransparent{
   /*border: 1px solid rgb(175, 216, 248);*/
   opacity: 0.5;
-  background-image:url(triangletwo-right.svg);
+  background-image:url(car-right.png);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -161,7 +161,7 @@
 
 .visitedStartNodeBlue {
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-image:url(triangletwo-right.svg);
+  background-image:url(car-right.png);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -178,7 +178,7 @@
 
 .visitedStartNodePurple {
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-image:url(triangletwo-right.svg);
+  background-image:url(car-right.png);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -209,7 +209,7 @@
 }
 
 .visitedTargetNodeBlue {
-  background-image: url(circle.svg);
+  background-image: url(finish-line.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -224,7 +224,7 @@
 }
 
 .visitedTargetNodePurple {
-  background-image: url(circle.svg);
+  background-image: url(finish-line.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -309,6 +309,27 @@
   z-index: 1;
 }
 
+#alert{
+  position: absolute;
+  z-index: 3;
+  background-color: rgba(255, 255, 255, 1);
+  width: 30%;
+  height: 50%;
+  border: 3px solid black;
+  border-radius: 5px;
+  text-align: center;
+  float: right;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  display: none;
+}
+
 #tutorial {
   position: absolute;
   z-index: 3;
@@ -327,11 +348,27 @@
   top: 0;
   left: 0;
   right: 0;
+  display: block;
+}
+
+#closeButton{
+  right: 2%;
+  top: 2%;
+  position: absolute;
+  background-color: #000000;
+  color: white;
+  border-radius: 10px;
+  
+}
+
+#closebutton:hover{
+  background-color: grey;
+
 }
 
 #nextButton {
   color: #ffffff;
-  background-color: #1abc9c;
+  background-color: black;
   position: absolute;
   right: 2%;
   bottom: 2%;
@@ -339,7 +376,7 @@
 
 #previousButton {
   color: #ffffff;
-  background-color: #1abc9c;
+  background-color: black;
   position: absolute;
   right: 12%;
   bottom: 2%;
@@ -347,7 +384,7 @@
 
 #skipButton {
   color: #ffffff;
-  background-color: #1abc9c;
+  background-color: black;
   position: absolute;
   left: 2%;
   bottom: 2%;
@@ -355,7 +392,7 @@
 
 #finishButton {
   color: #ffffff;
-  background-color: #1abc9c;
+  background-color: black;
   position: absolute;
   right: 2%;
   bottom: 2%;
@@ -365,7 +402,7 @@
 #nextButton:hover,
 #previousButton:hover,
 #skipButton:hover {
-  background-color: #48c9b0;
+  background-color: grey ;
 }
 
 #tutorialCounter {
@@ -376,7 +413,7 @@
 
 #mainTutorialImage {
   width: 25%;
-  padding-top: 5px;
+  padding-top: -30px;
 }
 
 #secondTutorialImage {
@@ -420,7 +457,7 @@
   display: inline-block;
   position: relative;
   top: 0.35em;
-  margin: 0 0.42em;
+  margin: 0 0.3;
 }
 
 #board {
@@ -527,17 +564,17 @@
 @keyframes wallAnimation {
   0% {
     transform: scale(.3);
-    background-color: rgb(12, 53, 71);
+    background-color: black;
   }
 
   50% {
     transform: scale(1.2);
-    background-color: rgb(12, 53, 71);
+    background-color: black;
   }
 
   100% {
     transform: scale(1.0);
-    background-color: rgb(12, 53, 71);
+    background-color: black;
   }
 }
 
@@ -673,7 +710,7 @@
 
 .object{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-image: url(diamond.svg);
+  background-image: url(mater.png);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -718,7 +755,7 @@
 
 .target{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-image: url(circle.svg);
+  background-image: url(finish-line.png);
   /*background-color: rgb(255, 254, 106);*/
   /*background-color: rgba(232, 147, 12, 0.75);*/
   background-position: center;
@@ -4880,6 +4917,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   margin: 0;
 }
 .navbar {
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
   min-height: 53px;
   margin-bottom: 30px;
@@ -5402,7 +5440,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #cccccc;
 }
 .navbar-inverse {
-  background-color: #34495e;
+  background-color: black;
 }
 .navbar-inverse .navbar-brand {
   color: #ffffff;
@@ -5481,7 +5519,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   border-bottom-color: #4b6075;
 }
 .navbar-inverse .navbar-nav > .open > .dropdown-menu {
-  background-color: #34495e;
+  background-color: #000000;
   padding: 3px 4px;
 }
 .navbar-inverse .navbar-nav > .open > .dropdown-menu > li > a {

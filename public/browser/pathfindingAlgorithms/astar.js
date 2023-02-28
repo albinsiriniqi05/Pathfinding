@@ -2,6 +2,7 @@ function astar(nodes, start, target, nodesToAnimate, boardArray, name, heuristic
   if (!start || !target || start === target) {
     return false;
   }
+  
   nodes[start].distance = 0;
   nodes[start].totalDistance = 0;
   nodes[start].direction = "up";
@@ -84,30 +85,6 @@ function getNeighbors(id, nodes, boardArray) {
     potentialNeighbor = `${x.toString()}-${(y + 1).toString()}`
     if (nodes[potentialNeighbor].status !== "wall") neighbors.push(potentialNeighbor);
   }
-  // if (boardArray[x - 1] && boardArray[x - 1][y - 1]) {
-  //   potentialNeighbor = `${(x - 1).toString()}-${(y - 1).toString()}`
-  //   let potentialWallOne = `${(x - 1).toString()}-${y.toString()}`
-  //   let potentialWallTwo = `${x.toString()}-${(y - 1).toString()}`
-  //   if (nodes[potentialNeighbor].status !== "wall" && !(nodes[potentialWallOne].status === "wall" && nodes[potentialWallTwo].status === "wall")) neighbors.push(potentialNeighbor);
-  // }
-  // if (boardArray[x + 1] && boardArray[x + 1][y - 1]) {
-  //   potentialNeighbor = `${(x + 1).toString()}-${(y - 1).toString()}`
-  //   let potentialWallOne = `${(x + 1).toString()}-${y.toString()}`
-  //   let potentialWallTwo = `${x.toString()}-${(y - 1).toString()}`
-  //   if (nodes[potentialNeighbor].status !== "wall" && !(nodes[potentialWallOne].status === "wall" && nodes[potentialWallTwo].status === "wall")) neighbors.push(potentialNeighbor);
-  // }
-  // if (boardArray[x - 1] && boardArray[x - 1][y + 1]) {
-  //   potentialNeighbor = `${(x - 1).toString()}-${(y + 1).toString()}`
-  //   let potentialWallOne = `${(x - 1).toString()}-${y.toString()}`
-  //   let potentialWallTwo = `${x.toString()}-${(y + 1).toString()}`
-  //   if (nodes[potentialNeighbor].status !== "wall" && !(nodes[potentialWallOne].status === "wall" && nodes[potentialWallTwo].status === "wall")) neighbors.push(potentialNeighbor);
-  // }
-  // if (boardArray[x + 1] && boardArray[x + 1][y + 1]) {
-  //   potentialNeighbor = `${(x + 1).toString()}-${(y + 1).toString()}`
-  //   let potentialWallOne = `${(x + 1).toString()}-${y.toString()}`
-  //   let potentialWallTwo = `${x.toString()}-${(y + 1).toString()}`
-  //   if (nodes[potentialNeighbor].status !== "wall" && !(nodes[potentialWallOne].status === "wall" && nodes[potentialWallTwo].status === "wall")) neighbors.push(potentialNeighbor);
-  // }
   return neighbors;
 }
 
