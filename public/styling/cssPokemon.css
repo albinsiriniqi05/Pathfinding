@@ -135,7 +135,7 @@
   /*border: 1px solid rgb(175, 216, 248);*/
   opacity: 0.5;
   background-image:url(triangletwo-up.svg);
-  background-color: rgb(255, 254, 106);
+  background-color: rgb(236, 28, 87);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -145,7 +145,7 @@
   /*border: 1px solid rgb(175, 216, 248);*/
   opacity: 0.5;
   background-image:url(triangletwo-up.svg);
-  background-color: rgb(255, 254, 106);
+  background-color: rgb(236, 28, 87);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -505,12 +505,12 @@
 
 .instantshortest-path{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-color: rgb(255, 254, 106);
+  background-color: rgb(236, 28, 87);
 }
 
 .instantshortest-path.weight{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-color: rgb(255, 254, 106);
+  background-color: rgb(236, 28, 87);
   background-image: url(weight.svg);
   background-position: center;
   background-repeat: no-repeat;
@@ -519,7 +519,7 @@
 
 .shortest-path{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-color: rgb(255, 254, 106);
+  background-color: rgb(236, 28, 87);
   /*background-position: center;
   background-repeat: no-repeat;
   background-size: contain;*/
@@ -535,7 +535,7 @@
 
 .shortest-path.weight{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-color: rgb(255, 254, 106);
+  background-color: rgb(236, 28, 87);
   background-image: url(weight.svg);
   background-position: center;
   background-repeat: no-repeat;
@@ -553,24 +553,24 @@
 @keyframes triangletwo {
   0% {
     transform: scale(.6);
-    background-color: rgb(255, 254, 106);
+    background-color: rgb(236, 28, 87);
   }
 
   50% {
     transform: scale(1.2);
-    background-color: rgb(255, 254, 106);
+    background-color: rgb(236, 28, 87);
   }
 
   100% {
     transform: scale(1.0);
-    background-color: rgb(255, 254, 106);
+    background-color: rgb(236, 28, 87);
   }
 }
 
 .shortest-path-unweighted{
   /*border: 1px solid rgb(175, 216, 248);*/
   background:url(spaceship.svg);
-  background-color: rgb(255, 254, 106);
+  background-color: rgb(236, 28, 87);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain
